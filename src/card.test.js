@@ -1,3 +1,4 @@
+import renderer from 'react-test-renderer';
 // make React available
 import React from 'react';
 
@@ -5,7 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 //make the App component available
-import App from './app';
+import Card from './card';
 
 //this is the test case
 it('renders without crashing', () => {
@@ -13,8 +14,15 @@ it('renders without crashing', () => {
   const div = document.createElement('div');
 
   //render the component, this is the actual test, if something is wrong it will fail here
-  ReactDOM.render(<App />, div);
+  ReactDOM.render(<Card />, div);
 
   //clean up code
   ReactDOM.unmountComponentAtNode(div);
+});
+
+it('renders the UI as expected', () => {
+    const tree = renderer
+              .create(<Card />)
+              .toJSON();
+            expect(tree).toMatchSnapshot();  
 });
