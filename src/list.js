@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from './Card'
-import './List.css';
+import Card from './card'
+import './list.css';
 
 export default function List(props) {
   return (
